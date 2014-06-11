@@ -77,16 +77,15 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection>scm:git:https://github.com/alexxiyang/shiro-redis.git</connection>
-		<developerConnection>scm:git:https://github.com/alexxiyang/shiro-redis.git</developerConnection>
-		<url>https://github.com/alexxiyang/shiro-redis.git</url>
+		<connection>scm:git:https://github.com/iamedu/shiro-redis.git</connection>
+		<developerConnection>scm:git:https://github.com/iamedu/shiro-redis.git</developerConnection>
+		<url>https://github.com/iamedu/shiro-redis.git</url>
 	</scm>
 	<distributionManagement>
-		<repository>
-			<id>nexus-releases</id>
-			<name>Nexus Release Repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
+        <repository>
+            <id>bintray</id>
+            <url>https://api.bintray.com/maven/bintray-user/bintray-repo/package</url>
+        </repository>
 	</distributionManagement>
 	<build>
 		<finalName>shiro-redis</finalName>
@@ -106,6 +105,35 @@
 	</build>
 
 	<profiles>
+        <profile>
+            <id>release</id>
+            <build>
+              <plugins>
+                <plugin>
+                  <artifactId>maven-source-plugin</artifactId>
+                  <executions>
+                    <execution>
+                      <id>attach-sources</id>
+                      <goals>
+                        <goal>jar</goal>
+                      </goals>
+                    </execution>
+                  </executions>
+                </plugin>
+                <plugin>
+                  <artifactId>maven-javadoc-plugin</artifactId>
+                  <executions>
+                    <execution>
+                      <id>attach-javadocs</id>
+                      <goals>
+                        <goal>jar</goal>
+                      </goals>
+                    </execution>
+                  </executions>
+                </plugin>
+              </plugins>
+            </build>
+        </profile>
 		<profile>
 			<id>release-sign-artifacts</id>
 			<activation>
@@ -147,6 +175,15 @@
 							</execution>
 						</executions>
 					</plugin>
+                    <plugin>
+                      <artifactId>maven-release-plugin</artifactId>
+                      <version>2.4.1</version>
+                      <configuration>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <releaseProfiles>release</releaseProfiles>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                      </configuration>
+                    </plugin>
 				</plugins>
 			</build>
 
