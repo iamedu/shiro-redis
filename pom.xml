@@ -3,7 +3,7 @@
 
 	<groupId>org.crazycake</groupId>
 	<artifactId>shiro-redis</artifactId>
-	<version>2.4.2.2-RELEASE</version>
+	<version>2.4.2.3-RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>shiro-redis</name>
@@ -84,7 +84,7 @@
 	<distributionManagement>
         <repository>
             <id>bintray</id>
-            <url>https://api.bintray.com/maven/iamedu/shiro-redis/shiro-redis</url>
+            <url>https://api.bintray.com/maven/iamedu/maven/shiro-redis</url>
         </repository>
 	</distributionManagement>
 	<build>
