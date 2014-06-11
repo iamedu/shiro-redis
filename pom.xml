@@ -84,7 +84,7 @@
 	<distributionManagement>
         <repository>
             <id>bintray</id>
-            <url>https://api.bintray.com/maven/bintray-user/bintray-repo/package</url>
+            <url>https://api.bintray.com/maven/iamedu/shiro-redis</url>
         </repository>
 	</distributionManagement>
 	<build>
@@ -101,6 +101,15 @@
 					<compilerArgument>-nowarn</compilerArgument>
 				</configuration>
 			</plugin>
+            <plugin>
+              <artifactId>maven-release-plugin</artifactId>
+              <version>2.4</version>
+              <configuration>
+                <useReleaseProfile>false</useReleaseProfile>
+                <releaseProfiles>release</releaseProfiles>
+                <autoVersionSubmodules>true</autoVersionSubmodules>
+              </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
@@ -134,30 +143,5 @@
               </plugins>
             </build>
         </profile>
-		<profile>
-			<id>release-sign-artifacts</id>
-			<activation>
-				<property>
-					<name>performRelease</name>
-					<value>true</value>
-				</property>
-			</activation>
-
-			<build>
-				<plugins>
-                    <plugin>
-                      <artifactId>maven-release-plugin</artifactId>
-                      <version>2.4.1</version>
-                      <configuration>
-                        <useReleaseProfile>false</useReleaseProfile>
-                        <releaseProfiles>release</releaseProfiles>
-                        <autoVersionSubmodules>true</autoVersionSubmodules>
-                      </configuration>
-                    </plugin>
-				</plugins>
-			</build>
-
-		</profile>
-
 	</profiles>
 </project>
