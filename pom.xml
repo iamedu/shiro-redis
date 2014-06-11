@@ -77,7 +77,7 @@
 	</developers>
 	<scm>
 		<connection>scm:git:https://github.com/iamedu/shiro-redis.git</connection>
-        <developerConnection>scm:git:git@github.com:iamedu/shiro-rest.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:iamedu/shiro-redis.git</developerConnection>
 		<url>https://github.com/iamedu/shiro-redis.git</url>
         <tag>HEAD</tag>
   </scm>
