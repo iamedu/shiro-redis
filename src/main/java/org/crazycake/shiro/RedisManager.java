@@ -7,6 +7,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisManager {
+    private JedisPoolConfig config;
 	
 	private String host = "127.0.0.1";
 	
@@ -31,12 +32,15 @@ public class RedisManager {
 	 */
 	public void init(){
 		if(jedisPool == null){
+            if(config == null) {
+                config = new JedisPoolConfig();
+            }
 			if(password != null && !"".equals(password)){
-				jedisPool = new JedisPool(new JedisPoolConfig(), host, port, timeout, password);
+				jedisPool = new JedisPool(config, host, port, timeout, password);
 			}else if(timeout != 0){
-				jedisPool = new JedisPool(new JedisPoolConfig(), host, port,timeout);
+				jedisPool = new JedisPool(config, host, port,timeout);
 			}else{
-				jedisPool = new JedisPool(new JedisPoolConfig(), host, port);
+				jedisPool = new JedisPool(config, host, port);
 			}
 			
 		}
@@ -191,7 +195,13 @@ public class RedisManager {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+    public JedisPoolConfig getConfig() {
+        return config;
+    }
+
+    public void setConfig(JedisPoolConfig config) {
+        this.config = config;
+    }
 	
 }
